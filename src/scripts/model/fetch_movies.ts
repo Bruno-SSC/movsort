@@ -26,9 +26,8 @@ function prepare_URL(filters: Filters): string {
   url += `include_video=${filters.video}&`;
   url += `language=${filters.language}&`;
   url += `page=${filters.page}&`;
+  url += `with_genres=${filters.genres}&`;
   url += `sort_by=${filters.sort}`;
-  url += `with_genres=${filters.genres}`;
-
   return url;
 }
 
@@ -39,7 +38,7 @@ export async function fetch_movies(): Promise<object[]> {
     language: "en-US",
     page: 1,
     sort: "popularity.desc",
-    genres: "",
+    genres: "16",
     year: 2010,
   };
 

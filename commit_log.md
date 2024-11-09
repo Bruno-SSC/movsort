@@ -3,5 +3,6 @@ com 0
 com 1
     implemented the "movie_list" element which holds and presents the list of queried movies in cards
 com 2
-    what about not making reqs constantly and instead, doing it once and saving the results using local-forage? This way I could also assure each movie object to have a proper typing and only required fields.
+    started using sass, organized files structure into MVC, implemented a modal animation for selecting the year and working on the filters options.
+
 

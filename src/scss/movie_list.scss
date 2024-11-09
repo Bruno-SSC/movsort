@@ -1,0 +1,28 @@
+// TODO: learn grid once again.
+.movie_list {
+  margin: auto;
+  height: 100vh;
+  width: 1366px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  overflow-y: scroll;
+}
+
+.movie_list::-webkit-scrollbar {
+  display: none;
+}
+
+.movie_card {
+  border: 2px solid blue;
+  height: 200px;
+  width: 150px;
+}
+
+.movie_card__poster_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
