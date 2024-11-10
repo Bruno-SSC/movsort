@@ -1,0 +1,47 @@
+.filter .filter__modal_box {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+
+  list-style: none;
+  background-color: aliceblue;
+  transition: all 500ms ease;
+
+  border-radius: 5px;
+}
+
+.filter .filter__modal_box .filter__modal_option {
+  padding: 10px;
+  padding-left: 10px;
+  opacity: 1;
+  transition: all 500ms ease;
+  transition-delay: 100ms;
+
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+
+  &--included {
+    color: #fff;
+    background-color: blue;
+  }
+
+  &--excluded {
+    color: #fff;
+    background-color: red;
+  }
+}
+
+.filter .filter__modal_box {
+  &--hidden {
+    height: 0;
+    transition: all 500ms ease;
+    transition-delay: 100ms;
+  }
+
+  &--hidden .filter__modal_option {
+    opacity: 0;
+    transition: all 500ms ease;
+  }
+}

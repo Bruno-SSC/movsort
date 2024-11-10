@@ -1,14 +1,13 @@
 // TODO: learn grid once again.
 .movie_list {
   margin: auto;
-  height: 100vh;
+  min-height: 100vh;
   width: 1366px;
 
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-
-  overflow-y: scroll;
+  padding-bottom: 100px;
 }
 
 .movie_list::-webkit-scrollbar {
@@ -16,9 +15,8 @@
 }
 
 .movie_card {
-  border: 2px solid blue;
-  height: 200px;
-  width: 150px;
+  height: 400px;
+  width: 250px;
 }
 
 .movie_card__poster_img {
