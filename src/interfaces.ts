@@ -1,8 +1,3 @@
-export interface Modal_states {
-  genre: boolean;
-  year: boolean;
-}
-
 export interface Filters {
   adult: boolean;
   video: boolean;
