@@ -1,7 +1,3 @@
-export const hide_modals = () => {
-  const modals = Array.from(document.getElementsByClassName("filter__modal_box"));
-  modals.forEach((m) => m.classList.add("filter__modal_box--hidden"));
-};
 export const hide_modal = (modal_ID: string) => {
   let modal_box = document.getElementById(modal_ID);
   if (!modal_box) return "modal not found";

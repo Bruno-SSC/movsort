@@ -10,3 +10,7 @@ com 4
     refactoring some code to avoid macaroni code (particularly, working in a more "variable-directed" way of knowing the included filters and updating their states accordingly)
 com 5
     I got a better code to handle open modals but I'm still working on it. Currenly, I'm thinking about wether I should close everyone not open and open them based on the new open list or change the data structure for modals and their state.
+com 6
+    reached a reasonable way to store the modal state.
+com 7
+
