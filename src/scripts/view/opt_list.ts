@@ -1,13 +1,16 @@
-export const hide_modal = (modal_ID: string) => {
-  let modal_box = document.getElementById(modal_ID);
-  if (!modal_box) return "modal not found";
-  modal_box.classList.add("filter__modal_box--hidden");
-};
+import { States } from "../model/opt_list";
 
-export const show_modal = (modal_ID: string) => {
-  let modal_box = document.getElementById(modal_ID);
-  if (!modal_box) return "modal not found";
-  modal_box.classList.remove("filter__modal_box--hidden");
+export const toggle_modals = (modals: States) => {
+  Object.keys(modals).forEach((modal_id) => {
+    let modal_box = document.getElementById(modal_id);
+    if (!modal_box) return "modal not found";
+
+    if (modals[modal_id]) {
+      modal_box.classList.remove("filter__modal_box--hidden");
+    } else {
+      modal_box.classList.add("filter__modal_box--hidden");
+    }
+  });
 };
 
 export const include_opt = (option: Element): void => {
