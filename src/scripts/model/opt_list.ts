@@ -1,13 +1,4 @@
-export interface States {
-  [key: string]: boolean;
-}
-
-interface Options {
-  [key: string]: {
-    included: string[];
-    excluded: string[];
-  };
-}
+import { States, Options } from "./Interfaces";
 
 const modals: States = {};
 const options: Options = {};

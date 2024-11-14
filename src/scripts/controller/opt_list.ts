@@ -3,7 +3,7 @@ import {
   update_modal_state,
   update_option_state,
 } from "../model/opt_list";
-import { toggle_modals } from "../view/opt_list";
+import { toggle_modals, toggle_options } from "../view/opt_list";
 
 const filters_inputs = Array.from(document.getElementsByClassName("filter__input"));
 
@@ -33,9 +33,11 @@ options.forEach((o) => {
     e.stopPropagation();
     const target = e.target as HTMLElement;
     if (target) "option not found!";
+
     const type = target.dataset.option_type;
     const value = target.dataset.value;
     if (!type || !value) return "type or value not found";
     const options = update_option_state(type, value);
+    toggle_options(options);
   });
 });
