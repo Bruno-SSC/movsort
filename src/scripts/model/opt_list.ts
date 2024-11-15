@@ -22,10 +22,12 @@ export const update_option_state = (type: string, value: string): Options => {
   }
 
   let included = options[type].included.findIndex((inc) => inc === value);
-  let excluded = options[type].excluded.findIndex((inc) => inc === value);
+  let excluded = options[type].excluded.findIndex((exc) => exc === value);
+  let neutral = options[type].neutral.findIndex((neu) => neu === value);
 
   // not found in included or excluded
   if (included === -1 && excluded === -1) {
+    options[type].neutral.splice(neutral, 1);
     options[type].included.push(value);
   }
 

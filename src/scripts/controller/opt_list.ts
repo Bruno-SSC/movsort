@@ -4,7 +4,7 @@ import {
   update_option_state,
 } from "../model/opt_list";
 
-import { toggle_modals, toggle_options } from "../view/opt_list";
+import { toggle_modals, toggle_option } from "../view/opt_list";
 
 const filters_inputs = Array.from(document.getElementsByClassName("filter__input"));
 
@@ -35,14 +35,16 @@ options.forEach((o) => {
     const target = e.target as HTMLElement;
     if (target) "option not found!";
 
-    const type = target.dataset.option_type;
-    const value = target.dataset.value;
-    if (!type || !value) return "type or value not found";
-    const options = update_option_state(type, value);
-    const option_names = Object.keys(options);
+    const dataset_type = target.dataset.option_type;
+    const dataset_value = target.dataset.value;
+    if (!dataset_type || !dataset_value) return "type or value not found";
+    const options = update_option_state(dataset_type, dataset_value);
+    const option_types = Object.keys(options);
 
-    option_names.forEach((name) => {
-      toggle_options(options, name);
+    option_types.forEach((type) => {
+      options[type].included.forEach((value) => toggle_option(type, value, "included"));
+      options[type].excluded.forEach((value) => toggle_option(type, value, "excluded"));
+      options[type].neutral.forEach((value) => toggle_option(type, value, "neutral"));
     });
   });
 });

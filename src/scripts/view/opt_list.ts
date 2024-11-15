@@ -1,4 +1,4 @@
-import { States, Options } from "../model/Interfaces";
+import { States } from "../model/Interfaces";
 
 export const toggle_modals = (modals: States) => {
   Object.keys(modals).forEach((modal_id) => {
@@ -13,31 +13,26 @@ export const toggle_modals = (modals: States) => {
   });
 };
 
-//? it's very likely a recursive approach would fits good here. Not splitting the fn or making a huge nest of iterators.
-export const toggle_options = (options: Options, type: string) => {
-  const option_states = Object.keys(options[type]);
+export const toggle_option = (type: string, value: string, state: string) => {
+  const selector: string = `[data-option_type="${type}"][data-value="${value}"]`;
+  const option = document.querySelector(selector);
 
-  option_states.forEach((state) => {
-    const curr_type = options[type][state];
+  if (!option) {
+    console.log(option);
+    return "element not found";
+  }
 
-    curr_type.forEach((value) => {
-      const selector: string = `[data-value="${value}"][data-option_type="${type}"]`;
-      const option = document.querySelector(selector);
-      if (!option) return "element not found";
-      const base_class = "filter__modal_option";
+  const base_class = "filter__modal_option";
 
-      if (state === "included") {
-        option.classList.add(base_class + "--included");
-      }
+  if (state === "included") option.classList.add(base_class + "--included");
 
-      if (state === "excluded") {
-        option.classList.add(base_class + "--excluded");
-      }
+  if (state === "excluded") {
+    option.classList.remove(base_class + "--included");
+    option.classList.add(base_class + "--excluded");
+  }
 
-      if (state === "neutral") {
-        option.classList.remove(base_class + "--included");
-        option.classList.remove(base_class + "--excluded");
-      }
-    });
-  });
+  if (state === "neutral") {
+    option.classList.remove(base_class + "--included");
+    option.classList.remove(base_class + "--excluded");
+  }
 };

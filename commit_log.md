@@ -18,4 +18,8 @@ com 8
     working on the updating the frontend accordingly to the options model but it's not turning out in a likeable way for me.
 com 9
     I got the frontend updating properly for the options changing but now i'm trying to get an alternative way and it's not going well.
+com 10 
+    Got everything working on the options toggling but i'm still uneasy with it. It takes to many iterations to retrive the values. However, I can't think about a way to solve it without changing the data structure.
+com 11
+    Since i'll likely be using the options variable, it means I'll have to do all the iterations mentioned in the previous commit many times. I'm changing it for a simpler structure.
 
