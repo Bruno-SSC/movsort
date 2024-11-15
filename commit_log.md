@@ -22,4 +22,5 @@ com 10
     Got everything working on the options toggling but i'm still uneasy with it. It takes to many iterations to retrive the values. However, I can't think about a way to solve it without changing the data structure.
 com 11
     Since i'll likely be using the options variable, it means I'll have to do all the iterations mentioned in the previous commit many times. I'm changing it for a simpler structure.
+    Already did for the genre options. However, it seems like I'll have quite the same function for 3 different variables. What if I pass the object instead of acessing it? Also, I would start using OOP already right?
 
