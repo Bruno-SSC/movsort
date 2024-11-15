@@ -13,30 +13,31 @@ export const toggle_modals = (modals: States) => {
   });
 };
 
-export const toggle_options = (options: Options) => {
-  const types = Object.keys(options);
-  const sample: any = {};
+//? it's very likely a recursive approach would fits good here. Not splitting the fn or making a huge nest of iterators.
+export const toggle_options = (options: Options, type: string) => {
+  const option_states = Object.keys(options[type]);
 
-  let all_options = Array.from(
-    document.getElementsByClassName(
-      "filter__modal_option"
-    ) as HTMLCollectionOf<HTMLElement>
-  );
+  option_states.forEach((state) => {
+    const curr_type = options[type][state];
 
-  types.forEach((t) => {
-    sample[t] = all_options.filter((opt) => opt.dataset.option_type === t);
+    curr_type.forEach((value) => {
+      const selector: string = `[data-value="${value}"][data-option_type="${type}"]`;
+      const option = document.querySelector(selector);
+      if (!option) return "element not found";
+      const base_class = "filter__modal_option";
+
+      if (state === "included") {
+        option.classList.add(base_class + "--included");
+      }
+
+      if (state === "excluded") {
+        option.classList.add(base_class + "--excluded");
+      }
+
+      if (state === "neutral") {
+        option.classList.remove(base_class + "--included");
+        option.classList.remove(base_class + "--excluded");
+      }
+    });
   });
-
-  console.log(sample);
-};
-
-export const include_opt = (option: Element): void => {
-  const base_class = "filter__modal_option";
-  option.classList.add(base_class + "--included");
-};
-
-export const exclude_opt = (option: Element): void => {
-  const base_class = "filter__modal_option";
-  option.classList.remove(base_class + "--included");
-  option.classList.add(base_class + "--excluded");
 };

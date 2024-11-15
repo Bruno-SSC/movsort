@@ -16,4 +16,6 @@ com 7
     updated view functions to work with the new structure of model states. Started working on the option states for inclusion/exclusion. Reached a "working" code but not sure if acceptable result.
 com 8
     working on the updating the frontend accordingly to the options model but it's not turning out in a likeable way for me.
+com 9
+    I got the frontend updating properly for the options changing but now i'm trying to get an alternative way and it's not going well.
 

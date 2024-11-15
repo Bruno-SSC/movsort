@@ -18,7 +18,7 @@ export const update_modal_state = (modal_id: string): States => {
 
 export const update_option_state = (type: string, value: string): Options => {
   if (!options[type]) {
-    options[type] = { included: [], excluded: [] };
+    options[type] = { included: [], excluded: [], neutral: [] };
   }
 
   let included = options[type].included.findIndex((inc) => inc === value);
@@ -38,6 +38,7 @@ export const update_option_state = (type: string, value: string): Options => {
   // found excluded, moved to none
   if (excluded >= 0) {
     options[type].excluded.splice(excluded, 1);
+    options[type].neutral.push(value);
   }
 
   return options;

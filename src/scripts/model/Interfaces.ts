@@ -6,5 +6,6 @@ export interface Options {
   [key: string]: {
     included: string[];
     excluded: string[];
+    neutral: string[];
   };
 }
