@@ -15,7 +15,7 @@ export const toggle_modals = (modals: States) => {
 
 export const toggle_option = (type: string, value: string, state: string) => {
   const selector: string = `[data-option_type="${type}"][data-value="${value}"]`;
-  const option = document.querySelector(selector);
+  const option = document.querySelector(selector) as HTMLElement;
 
   if (!option) {
     console.log(option);
@@ -24,15 +24,20 @@ export const toggle_option = (type: string, value: string, state: string) => {
 
   const base_class = "filter__modal_option";
 
-  if (state === "included") option.classList.add(base_class + "--included");
+  if (state === "included") {
+    option.classList.add(base_class + "--included");
+    option.dataset.state = "included";
+  }
 
   if (state === "excluded") {
     option.classList.remove(base_class + "--included");
     option.classList.add(base_class + "--excluded");
+    option.dataset.state = "excluded";
   }
 
-  if (state === "neutral") {
+  if (state === "ignored") {
     option.classList.remove(base_class + "--included");
     option.classList.remove(base_class + "--excluded");
+    option.dataset.state = "ignored";
   }
 };

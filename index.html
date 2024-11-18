@@ -1,66 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovSort</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MovSort</title>
-</head>
+  <body>
+    <div id="app">
+      <header></header>
 
-<body>
-  <div id="app">
+      <main>
+        <section class="options_list">
+          <div class="filter">
+            <p class="filter__title">Genre</p>
+            <input
+              id="genre_input"
+              name="filter__input_genre"
+              class="filter__input"
+              type="number" />
 
-    <header>
+            <!-- ! I need to render this dinamically ASAP. -->
+            <ul id="genre_modal" class="filter__modal_box filter__modal_box--hidden">
+              <li
+                data-option_type="genre"
+                data-value="drama"
+                data-state="ignored"
+                class="filter__modal_option">
+                Drama
+              </li>
 
-    </header>
+              <li
+                data-option_type="genre"
+                data-value="action"
+                data-state="ignored"
+                class="filter__modal_option">
+                Action
+              </li>
 
-    <main>
+              <li
+                data-option_type="genre"
+                data-value="animation"
+                data-state="ignored"
+                class="filter__modal_option">
+                Animation
+              </li>
 
-      <section class="options_list">
+              <li
+                data-option_type="genre"
+                data-value="adventure"
+                data-state="ignored"
+                class="filter__modal_option">
+                Adventure
+              </li>
+            </ul>
+          </div>
 
-        <div class="filter">
+          <div class="filter">
+            <p class="filter__title">Year</p>
+            <input
+              id="year_input"
+              name="filter__input_year"
+              class="filter__input"
+              type="number" />
 
-          <p class="filter__title">Genre</p>
-          <input id="genre_input" name="filter__input_genre" class="filter__input" type="number">
+            <ul id="year_modal" class="filter__modal_box filter__modal_box--hidden">
+              <li data-option_type="year" data-value="2020" class="filter__modal_option">
+                2020
+              </li>
+              <li data-option_type="year" data-value="2015" class="filter__modal_option">
+                2015
+              </li>
+              <li data-option_type="year" data-value="2010" class="filter__modal_option">
+                2010
+              </li>
+              <li data-option_type="year" data-value="2005" class="filter__modal_option">
+                2005
+              </li>
+            </ul>
+          </div>
+        </section>
 
-          <!-- ! I need to render this dinamically ASAP. -->
-          <ul id="genre_modal" class="filter__modal_box filter__modal_box--hidden">
-            <li data-option_type="genre" data-value="drama" class="filter__modal_option">Drama</li>
-            <li data-option_type="genre" data-value="action" class="filter__modal_option">Action</li>
-            <li data-option_type="genre" data-value="animation" class="filter__modal_option">Animation
-            </li>
-            <li data-option_type="genre" data-value="adventure" class="filter__modal_option">Adventure
-            </li>
-          </ul>
-        </div>
+        <section class="movie_list" id="movie_list"></section>
+      </main>
 
-
-        <div class="filter">
-          <p class="filter__title">Year</p>
-          <input id="year_input" name="filter__input_year" class="filter__input" type="number">
-
-          <ul id="year_modal" class="filter__modal_box filter__modal_box--hidden">
-            <li data-option_type="year" data-value="2020" class="filter__modal_option">2020</li>
-            <li data-option_type="year" data-value="2015" class="filter__modal_option">2015</li>
-            <li data-option_type="year" data-value="2010" class="filter__modal_option">2010</li>
-            <li data-option_type="year" data-value="2005" class="filter__modal_option">2005</li>
-          </ul>
-        </div>
-
-      </section>
-
-      <section class="movie_list" id="movie_list">
-      </section>
-
-    </main>
-
-    <footer>
-
-    </footer>
-
-  </div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
+      <footer></footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

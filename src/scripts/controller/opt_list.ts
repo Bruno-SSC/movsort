@@ -1,6 +1,6 @@
 import { hide_all_modals, update_modal_state } from "../model/opt_list";
 import { Filters } from "../model/Filters";
-import { toggle_modals } from "../view/opt_list";
+import { toggle_modals, toggle_option } from "../view/opt_list";
 
 const filters_inputs = Array.from(document.getElementsByClassName("filter__input"));
 const genres = new Filters();
@@ -32,9 +32,16 @@ genre_options.forEach((o) => {
     e.stopPropagation();
     const target = e.target as HTMLElement;
     if (target) "target not found!";
-    const dataset_value = target.dataset.value;
-    if (!dataset_value) return "dataset not found";
+    const genre_value = target.dataset.value;
+    const genre_state = target.dataset.state;
+    if (!genre_value) return "dataset not found";
 
-    
+    if (genre_state === "ignored") genres.include_value(genre_value);
+    if (genre_state === "included") genres.exclude_value(genre_value);
+    if (genre_state === "excluded") genres.ignore_value(genre_value);
+
+    for (let inc of genres.included) toggle_option("genre", inc, "included");
+    for (let exc of genres.excluded) toggle_option("genre", exc, "excluded");
+    for (let ign of genres.ignored) toggle_option("genre", ign, "ignored");
   });
 });

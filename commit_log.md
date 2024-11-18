@@ -23,5 +23,7 @@ com 10
 com 11
     Since i'll likely be using the options variable, it means I'll have to do all the iterations mentioned in the previous commit many times. I'm changing it for a simpler structure.
 com 12
-    Added a "Filter" class with included/excluded props to instantiate each options category and manage it easier. Although, managing a value to move like this "included -> excluded -> none" in a clean way is proving harder than expected.
+    Added a "Filter" class with included/excluded props to instantiate each options category and manage it easier. 
+com 13
+    I think it's kinda of reasonable how the filter options selecting process and frontend update is now. However, I do feel like I'm overengineering it.
 
