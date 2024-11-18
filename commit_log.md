@@ -26,4 +26,6 @@ com 12
     Added a "Filter" class with included/excluded props to instantiate each options category and manage it easier. 
 com 13
     I think it's kinda of reasonable how the filter options selecting process and frontend update is now. However, I do feel like I'm overengineering it.
+com 14
+    some minor changes to make it more cleaner. I split the genre stuff into a genre controller of it's own.
 

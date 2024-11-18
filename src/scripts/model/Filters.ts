@@ -1,11 +1,12 @@
-import { Options } from "./Interfaces";
-
 export class Filters {
+  type: string;
   included: string[] = [];
   excluded: string[] = [];
   ignored: string[] = [];
 
-  constructor() {}
+  constructor(type: string) {
+    this.type = type;
+  }
 
   include_value(value: string): boolean {
     let ignored_search: number = this.ignored.findIndex((option) => option === value);
