@@ -5,5 +5,4 @@ export interface States {
 export interface Options {
   included: string[];
   excluded: string[];
-  neutral: string[];
 }

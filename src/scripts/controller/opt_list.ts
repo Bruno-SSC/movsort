@@ -1,11 +1,10 @@
-import {
-  hide_all_modals,
-  update_genre_options,
-  update_modal_state,
-} from "../model/opt_list";
-import { toggle_modals, toggle_option } from "../view/opt_list";
+import { hide_all_modals, update_modal_state } from "../model/opt_list";
+import { Filters } from "../model/Filters";
+import { toggle_modals } from "../view/opt_list";
 
 const filters_inputs = Array.from(document.getElementsByClassName("filter__input"));
+const genres = new Filters();
+const years = new Filters();
 
 filters_inputs.forEach((f) => {
   f.addEventListener("click", (e) => {
@@ -26,23 +25,16 @@ app_el.addEventListener("click", (e) => {
   toggle_modals(modals);
 });
 
-const options = Array.from(document.getElementsByClassName("filter__modal_option"));
+const genre_options = Array.from(document.querySelectorAll("[data-option_type='genre']"));
 
-options.forEach((o) => {
+genre_options.forEach((o) => {
   o.addEventListener("click", (e) => {
     e.stopPropagation();
     const target = e.target as HTMLElement;
-    if (target) "option not found!";
-
-    const dataset_type = target.dataset.option_type;
+    if (target) "target not found!";
     const dataset_value = target.dataset.value;
-    if (!dataset_type || !dataset_value) return "type or value not found";
+    if (!dataset_value) return "dataset not found";
 
-    if (dataset_type === "genre") {
-      update_genre_options(dataset_value);
-    }
-
-    if (dataset_type === "year") {
-    }
+    
   });
 });
