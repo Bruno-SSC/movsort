@@ -32,5 +32,8 @@ com 15
     did some file changes and now the filters for genres are starting to update the movies when changed. However, I'm very uneasy on how it's working.
 com 16
     Improved (kinda of) the organization of the movie list updating therefore mentioned and started working into rendering the genres dinamically
+com 17
+    The movie lists updates accordingly with the genres select to include/exclude and the provided year as well. It seems like a good MVP for now.
+
 
     

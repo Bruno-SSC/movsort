@@ -7,7 +7,8 @@ export class Query {
   language: string;
   page: number;
   sort: string;
-  genres: string;
+  included_genres: string;
+  excluded_genres: string;
   year: number;
 
   constructor() {
@@ -16,7 +17,8 @@ export class Query {
     this.language = "en-US";
     this.page = 1;
     this.sort = "popularity.desc";
-    this.genres = "16";
+    this.included_genres = "";
+    this.excluded_genres = "";
     this.year = 2011;
 
     this.options = {
@@ -30,7 +32,7 @@ export class Query {
   }
 
   update_genres(): void | string {
-    const data = localStorage.getItem("genres");
+    let data = localStorage.getItem("genres");
     if (!data) return "data not found";
     const genres: Filters = JSON.parse(data);
     let genre_IDs = localStorage.getItem("genre_IDs");
@@ -38,11 +40,27 @@ export class Query {
 
     genres.included.forEach((value) => {
       for (let entry of JSON.parse(genre_IDs)) {
-        if (entry.name.toLowerCase() === value.toLowerCase()) {
-          this.genres += ", " + entry.id;
+        if (entry.name === value) {
+          this.included_genres += entry.id + ",";
         }
       }
     });
+
+    genres.excluded.forEach((value) => {
+      for (let entry of JSON.parse(genre_IDs)) {
+        if (entry.name === value) {
+          this.excluded_genres += entry.id + ",";
+        }
+      }
+    });
+  }
+
+  update_year(): void | string {
+    const data = localStorage.getItem("query_year");
+    if (!data) return "data for number not found";
+    const year: number = JSON.parse(data);
+    if (year <= 1950) return "too much in the past";
+    this.year = year;
   }
 
   build_URL(): string {
@@ -52,7 +70,8 @@ export class Query {
     url += `include_video=${this.video}&`;
     url += `language=${this.language}&`;
     url += `page=${this.page}&`;
-    url += `with_genres=${this.genres}&`;
+    url += `with_genres=${this.included_genres}&`;
+    url += `without_genres=${this.excluded_genres}&`;
     url += `sort_by=${this.sort}`;
     return url;
   }
@@ -61,6 +80,7 @@ export class Query {
     const URL = this.build_URL();
     const req = await fetch(URL, this.options);
     const json = await req.json();
+    console.log(json.results);
     return json.results;
   };
 }

@@ -1,6 +1,6 @@
 import { Filters } from "../model/Filters";
 import { Query } from "../model/Query";
-import { update_movies } from "../view/movie_list";
+import { clean_movie_list, update_movies } from "../view/movie_list";
 import { toggle_option } from "../view/opt_list";
 
 const genres = new Filters("genres");
@@ -27,6 +27,22 @@ genre_options.forEach((o) => {
     const query = new Query();
     query.update_genres();
     const movie_list = await query.fetch_movies();
+    clean_movie_list();
     update_movies(movie_list);
   });
 });
+
+const year_input = document.getElementById("year_input");
+
+if (year_input) {
+  year_input.addEventListener("change", async (e) => {
+    let target = e.target as HTMLInputElement;
+    localStorage.setItem("query_year", target.value);
+    const query = new Query();
+    query.update_genres();
+    query.update_year();
+    const movie_list = await query.fetch_movies();
+    clean_movie_list();
+    update_movies(movie_list);
+  });
+}

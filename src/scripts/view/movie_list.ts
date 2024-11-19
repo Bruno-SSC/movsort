@@ -11,8 +11,11 @@ export const create_movie_card = (movie: any) => {
 };
 
 export const clean_movie_list = () => {
-  const movie_list = document.getElementById("movie_list");
-  if (movie_list) movie_list.innerHTML = "";
+  const movie_list = Array.from(
+    document.getElementsByClassName("movie_card") as HTMLCollectionOf<HTMLElement>
+  );
+
+  movie_list.forEach((card) => card.remove());
 };
 
 export const update_movies = async (movie_list: object[]) => {
