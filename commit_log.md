@@ -28,4 +28,7 @@ com 13
     I think it's kinda of reasonable how the filter options selecting process and frontend update is now. However, I do feel like I'm overengineering it.
 com 14
     some minor changes to make it more cleaner. I split the genre stuff into a genre controller of it's own.
+com 15
+    did some file changes and now the filters for genres are starting to update the movies when changed. However, I'm very uneasy on how it's working.
 
+    

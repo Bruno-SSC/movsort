@@ -1,4 +1,4 @@
-import { States } from "./Interfaces";
+import { States } from "../Utils/Interfaces";
 
 const modals: States = {};
 

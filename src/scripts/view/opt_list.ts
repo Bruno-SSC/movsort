@@ -1,4 +1,4 @@
-import { States } from "../model/Interfaces";
+import { States } from "../Utils/Interfaces";
 
 export const toggle_modals = (modals: States) => {
   Object.keys(modals).forEach((modal_id) => {

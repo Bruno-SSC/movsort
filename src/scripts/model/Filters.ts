@@ -39,4 +39,9 @@ export class Filters {
     else this.ignored.push(value);
     return true;
   }
+
+  save() {
+    const data = JSON.stringify(this);
+    localStorage.setItem(this.type, data);
+  }
 }

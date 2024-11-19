@@ -9,3 +9,8 @@ export const create_movie_card = (movie: any) => {
 
   if (movie_list) movie_list.innerHTML += movie_card;
 };
+
+export const clean_movie_list = () => {
+  const movie_list = document.getElementById("movie_list");
+  if (movie_list) movie_list.innerHTML = "";
+};
