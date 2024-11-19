@@ -14,3 +14,7 @@ export const clean_movie_list = () => {
   const movie_list = document.getElementById("movie_list");
   if (movie_list) movie_list.innerHTML = "";
 };
+
+export const update_movies = async (movie_list: object[]) => {
+  movie_list.forEach((mov) => create_movie_card(mov));
+};

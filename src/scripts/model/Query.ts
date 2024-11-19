@@ -1,85 +1,7 @@
 import { Filters } from "./Filters";
 
-const genre_IDs = [
-  {
-    id: 28,
-    name: "Action",
-  },
-  {
-    id: 12,
-    name: "Adventure",
-  },
-  {
-    id: 16,
-    name: "Animation",
-  },
-  {
-    id: 35,
-    name: "Comedy",
-  },
-  {
-    id: 80,
-    name: "Crime",
-  },
-  {
-    id: 99,
-    name: "Documentary",
-  },
-  {
-    id: 18,
-    name: "Drama",
-  },
-  {
-    id: 10751,
-    name: "Family",
-  },
-  {
-    id: 14,
-    name: "Fantasy",
-  },
-  {
-    id: 36,
-    name: "History",
-  },
-  {
-    id: 27,
-    name: "Horror",
-  },
-  {
-    id: 10402,
-    name: "Music",
-  },
-  {
-    id: 9648,
-    name: "Mystery",
-  },
-  {
-    id: 10749,
-    name: "Romance",
-  },
-  {
-    id: 878,
-    name: "Science Fiction",
-  },
-  {
-    id: 10770,
-    name: "TV Movie",
-  },
-  {
-    id: 53,
-    name: "Thriller",
-  },
-  {
-    id: 10752,
-    name: "War",
-  },
-  {
-    id: 37,
-    name: "Western",
-  },
-];
-
 export class Query {
+  options: {};
   adult: boolean;
   video: boolean;
   language: string;
@@ -96,15 +18,26 @@ export class Query {
     this.sort = "popularity.desc";
     this.genres = "16";
     this.year = 2011;
+
+    this.options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MWRlNzAzZjBiZTk1ODcwMDE0N2MxYTM3ZDg0ODRkMCIsIm5iZiI6MTczMTA4Nzc2My4zMTc2NTY1LCJzdWIiOiI2MjlhYTAxNGE0NGQwOTUyNzZlYjA5YWQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.qaMthKyz051xoaRMK7GNzF-4mj_oKawzBVTUz4yelJI",
+      },
+    };
   }
 
   update_genres(): void | string {
     const data = localStorage.getItem("genres");
     if (!data) return "data not found";
     const genres: Filters = JSON.parse(data);
+    let genre_IDs = localStorage.getItem("genre_IDs");
+    if (!genre_IDs) return "genre_IDs not found";
 
     genres.included.forEach((value) => {
-      for (let entry of genre_IDs) {
+      for (let entry of JSON.parse(genre_IDs)) {
         if (entry.name.toLowerCase() === value.toLowerCase()) {
           this.genres += ", " + entry.id;
         }
@@ -123,4 +56,11 @@ export class Query {
     url += `sort_by=${this.sort}`;
     return url;
   }
+
+  fetch_movies = async (): Promise<object[]> => {
+    const URL = this.build_URL();
+    const req = await fetch(URL, this.options);
+    const json = await req.json();
+    return json.results;
+  };
 }

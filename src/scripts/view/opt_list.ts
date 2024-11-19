@@ -41,3 +41,23 @@ export const toggle_option = (type: string, value: string, state: string) => {
     option.dataset.state = "ignored";
   }
 };
+
+export const render_genre_list = () => {
+  const genre_modal = document.getElementById("genre_modal");
+  if (!genre_modal) return "genre modal not found";
+
+  let data: string | null = localStorage.getItem("genre_IDs");
+  if (!data) return "data for genre_IDs not found";
+
+  let genre_IDs: { id: number; name: string }[] = JSON.parse(data);
+
+  for (let genre of genre_IDs) {
+    const new_item = document.createElement("li");
+    new_item.dataset.option_type = "genre";
+    new_item.dataset.value = genre.name;
+    new_item.dataset.state = "ignored";
+    new_item.classList.add("filter__modal_option");
+    new_item.innerText = genre.name;
+    genre_modal.appendChild(new_item);
+  }
+};

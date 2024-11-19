@@ -30,5 +30,7 @@ com 14
     some minor changes to make it more cleaner. I split the genre stuff into a genre controller of it's own.
 com 15
     did some file changes and now the filters for genres are starting to update the movies when changed. However, I'm very uneasy on how it's working.
+com 16
+    Improved (kinda of) the organization of the movie list updating therefore mentioned and started working into rendering the genres dinamically
 
     
