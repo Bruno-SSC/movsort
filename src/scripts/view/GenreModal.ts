@@ -11,7 +11,7 @@ export class GenreModalView {
     this.element = document.getElementById("genre_modal") as HTMLElement;
   }
 
-  toggle(): void {
+  toggle_modal(): void {
     this.hidden = !this.hidden;
 
     if (this.hidden) {
@@ -29,7 +29,35 @@ export class GenreModalView {
       new_item.dataset.state = "ignored";
       new_item.classList.add("filter__modal_option");
       new_item.innerText = genre.name;
+      new_item.addEventListener("click", (e) => this.toggle_option(e));
       this.element.appendChild(new_item);
     });
+  }
+
+  toggle_option(e: Event) {
+    const target = e.target as HTMLElement;
+    const state = target.dataset.state;
+
+    const base_class = "filter__modal_option";
+
+    if (state === "ignored") {
+      target.classList.add(base_class + "--included");
+      target.dataset.state = "included";
+      return;
+    }
+
+    if (state === "included") {
+      target.classList.remove(base_class + "--included");
+      target.classList.add(base_class + "--excluded");
+      target.dataset.state = "excluded";
+      return;
+    }
+
+    if (state === "excluded") {
+      target.classList.remove(base_class + "--included");
+      target.classList.remove(base_class + "--excluded");
+      target.dataset.state = "ignored";
+      return;
+    }
   }
 }

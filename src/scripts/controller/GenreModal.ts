@@ -18,27 +18,9 @@ export class GenreModalController {
     genre_input.addEventListener("click", () => {
       this.toggle_modal();
     });
-
-    // TODO: this is where I stopped yesterday. Idea: should each options be an instanciated object with "toggle" method?
-    const genre_options = Array.from(
-      document.querySelectorAll("[data-option_type='genre']")
-    );
-
-    genre_options.forEach((o) => {
-      o.addEventListener("click", async (e) => {
-        e.stopPropagation();
-        const target = e.target as HTMLElement;
-        if (target) "target not found!";
-        const genre_value = target.dataset.value;
-        const genre_state = target.dataset.state;
-        if (!genre_value) return "dataset not found";
-
-        console.log(target)
-      });
-    });
   }
 
   toggle_modal(): void {
-    this.view.toggle();
+    this.view.toggle_modal();
   }
 }

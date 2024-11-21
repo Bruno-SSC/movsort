@@ -39,6 +39,8 @@ com 18
     However, I feel like the dataflow is messed up and I need to solve other topics before going on with this.
 com 19
     I'm doing a huge refactor to make things more organized. I'm learning how to properly use the MVC and stopped importing js files like I did with the css file. 
+com 20
+    implemented the changing color for genres but unsure if it fits the new code structure. Shouldn't the function be receiving some sort of data to update the frontend accordingly?
 
 
     
