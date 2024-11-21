@@ -1,5 +1,4 @@
-import { hide_all_modals, update_modal_state } from "../model/Modals";
-import { toggle_modals } from "../view/opt_list";
+import { hide_all_modals, update_modal_state } from "./Modals";
 
 const filters_inputs = Array.from(document.getElementsByClassName("filter__input"));
 filters_inputs.forEach((f) => {

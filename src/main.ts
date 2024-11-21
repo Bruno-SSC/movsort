@@ -1,9 +1,10 @@
 import "./styles/style.css";
-import "./scripts/Utils/genre_IDs";
 
-import "./scripts/view/movie_list";
-import "./scripts/view/opt_list";
+import { GenreModalController } from "./scripts/controller/GenreModal";
+import { MovieListController } from "./scripts/controller/MovieList";
 
-import "./scripts/controller/start_controller";
-import "./scripts/controller/modals_controller";
-import "./scripts/controller/filters_controller";
+const genre_modal_controller = new GenreModalController();
+genre_modal_controller.initialize();
+
+const movie_list_controller = new MovieListController();
+movie_list_controller.initialize();

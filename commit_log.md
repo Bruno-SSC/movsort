@@ -37,6 +37,8 @@ com 17
 com 18
     Changed the year filter to be more like the genre with modal and options but since the API doesn't provide the same features for include/exclude I will need to rebuild the logic.
     However, I feel like the dataflow is messed up and I need to solve other topics before going on with this.
+com 19
+    I'm doing a huge refactor to make things more organized. I'm learning how to properly use the MVC and stopped importing js files like I did with the css file. 
 
 
     

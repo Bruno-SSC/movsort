@@ -1,7 +1,7 @@
-import { Filters } from "../model/Filters";
+import { Filters } from "./Filters";
 import { Query } from "../model/Query";
-import { clean_movie_list, update_movies } from "../view/movie_list";
-import { toggle_option } from "../view/opt_list";
+import { clean_movie_list, update_movies } from "./movie_list";
+import { toggle_option } from "./opt_list";
 
 const genres = new Filters("genres");
 const genre_options = Array.from(document.querySelectorAll("[data-option_type='genre']"));
