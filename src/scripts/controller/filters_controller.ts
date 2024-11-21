@@ -6,6 +6,13 @@ import { toggle_option } from "../view/opt_list";
 const genres = new Filters("genres");
 const genre_options = Array.from(document.querySelectorAll("[data-option_type='genre']"));
 
+const update_query = async () => {
+  const query = new Query();
+  const movie_list = await query.fetch_movies();
+  clean_movie_list();
+  update_movies(movie_list);
+};
+
 genre_options.forEach((o) => {
   o.addEventListener("click", async (e) => {
     e.stopPropagation();
@@ -24,25 +31,31 @@ genre_options.forEach((o) => {
     genres.ignored.forEach((value) => toggle_option("genre", value, "ignored"));
 
     genres.save();
-    const query = new Query();
-    query.update_genres();
-    const movie_list = await query.fetch_movies();
-    clean_movie_list();
-    update_movies(movie_list);
+    update_query();
   });
 });
 
-const year_input = document.getElementById("year_input");
+const years = new Filters("years");
+const year_options = Array.from(document.querySelectorAll("[data-option_type='year']"));
 
-if (year_input) {
-  year_input.addEventListener("change", async (e) => {
-    let target = e.target as HTMLInputElement;
-    localStorage.setItem("query_year", target.value);
-    const query = new Query();
-    query.update_genres();
-    query.update_year();
-    const movie_list = await query.fetch_movies();
-    clean_movie_list();
-    update_movies(movie_list);
+year_options.forEach((o) => {
+  o.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    const target = e.target as HTMLElement;
+    if (target) "target not found!";
+    const year_value = target.dataset.value;
+    const year_state = target.dataset.state;
+    if (!year_value) return "dataset not found";
+
+    if (year_state === "ignored") years.include_value(year_value);
+    if (year_state === "included") years.exclude_value(year_value);
+    if (year_state === "excluded") years.ignore_value(year_value);
+
+    years.included.forEach((value) => toggle_option("year", value, "included"));
+    years.excluded.forEach((value) => toggle_option("year", value, "excluded"));
+    years.ignored.forEach((value) => toggle_option("year", value, "ignored"));
+
+    years.save();
+    update_query();
   });
-}
+});

@@ -29,6 +29,9 @@ export class Query {
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MWRlNzAzZjBiZTk1ODcwMDE0N2MxYTM3ZDg0ODRkMCIsIm5iZiI6MTczMTA4Nzc2My4zMTc2NTY1LCJzdWIiOiI2MjlhYTAxNGE0NGQwOTUyNzZlYjA5YWQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.qaMthKyz051xoaRMK7GNzF-4mj_oKawzBVTUz4yelJI",
       },
     };
+
+    this.update_genres();
+    this.update_year();
   }
 
   update_genres(): void | string {
@@ -56,11 +59,10 @@ export class Query {
   }
 
   update_year(): void | string {
-    const data = localStorage.getItem("query_year");
-    if (!data) return "data for number not found";
-    const year: number = JSON.parse(data);
-    if (year <= 1950) return "too much in the past";
-    this.year = year;
+    let data = localStorage.getItem("years");
+    if (!data) return "data not found";
+    const years: Filters = JSON.parse(data);
+    this.year = Number(years.included[0]);
   }
 
   build_URL(): string {
@@ -80,7 +82,6 @@ export class Query {
     const URL = this.build_URL();
     const req = await fetch(URL, this.options);
     const json = await req.json();
-    console.log(json.results);
     return json.results;
   };
 }

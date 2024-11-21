@@ -34,6 +34,9 @@ com 16
     Improved (kinda of) the organization of the movie list updating therefore mentioned and started working into rendering the genres dinamically
 com 17
     The movie lists updates accordingly with the genres select to include/exclude and the provided year as well. It seems like a good MVP for now.
+com 18
+    Changed the year filter to be more like the genre with modal and options but since the API doesn't provide the same features for include/exclude I will need to rebuild the logic.
+    However, I feel like the dataflow is messed up and I need to solve other topics before going on with this.
 
 
     

@@ -42,7 +42,7 @@ export const toggle_option = (type: string, value: string, state: string) => {
   }
 };
 
-export const render_genre_list = () => {
+export const fill_genre_list = () => {
   const genre_modal = document.getElementById("genre_modal");
   if (!genre_modal) return "genre modal not found";
 
@@ -59,5 +59,20 @@ export const render_genre_list = () => {
     new_item.classList.add("filter__modal_option");
     new_item.innerText = genre.name;
     genre_modal.appendChild(new_item);
+  }
+};
+
+export const fill_years_list = () => {
+  const year_modal = document.getElementById("year_modal");
+  if (!year_modal) return "year modal not found";
+
+  for (let i = 2024; i >= 1951; i--) {
+    const new_item = document.createElement("li");
+    new_item.dataset.option_type = "year";
+    new_item.dataset.value = i.toString();
+    new_item.dataset.state = "ignored";
+    new_item.classList.add("filter__modal_option");
+    new_item.innerText = i.toString();
+    year_modal.appendChild(new_item);
   }
 };
