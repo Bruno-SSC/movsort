@@ -2,8 +2,11 @@ export interface States {
   [key: string]: boolean;
 }
 
-export interface Options {
-  included: string[];
-  excluded: string[];
-  ignored: string[];
+export interface option_state {
+  [key: string]: "ignored" | "included" | "excluded";
+}
+
+export interface genre_object {
+  name: string;
+  id: number;
 }

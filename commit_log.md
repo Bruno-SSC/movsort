@@ -40,7 +40,9 @@ com 18
 com 19
     I'm doing a huge refactor to make things more organized. I'm learning how to properly use the MVC and stopped importing js files like I did with the css file. 
 com 20
-    implemented the changing color for genres but unsure if it fits the new code structure. Shouldn't the function be receiving some sort of data to update the frontend accordingly?
+    The option states now works and it's very decent. Worked in the GenreModal-view/model/controller to make a good clean workflow. I'm proud on how it turned out.
+com 21
+
 
 
     
