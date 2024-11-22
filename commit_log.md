@@ -42,6 +42,13 @@ com 19
 com 20
     The option states now works and it's very decent. Worked in the GenreModal-view/model/controller to make a good clean workflow. I'm proud on how it turned out.
 com 21
+    Started using dotenv for the api token, changed the logic for the first movie list query, regenerated my token as well, now I can make the project public.
+com 22
+    I forgot to change the api token for the dotenv import in the genres fetch before.
+    Implemented the first controller interaction between GenresController and MovieListController. Now genres change the movie list.
+    However, I'm not sure if it's the right way to do it. Must give some thought. Strangely, it actually makes some sense.
+    I still need to work the semicolon and improve the feature in general but for a sigle genre it already works. Big step.
+
 
 
 
