@@ -1,5 +1,6 @@
 import { GenreModalModel } from "../model/GenreModal";
 import { GenreModalView } from "../view/GenreModal";
+import { EventManager } from "../Utils/EventManager";
 
 export class GenreModalController {
   model: GenreModalModel;
@@ -16,6 +17,10 @@ export class GenreModalController {
 
     const genre_input = document.getElementById("genre_input") as HTMLElement;
     genre_input.addEventListener("click", () => this.toggle_modal());
+
+    this.view.element.addEventListener("click", (e) => {
+      this.handle_option_click(e);
+    });
   }
 
   handle_option_click(e: Event) {
@@ -28,6 +33,7 @@ export class GenreModalController {
 
     this.model.toggle_option(target.dataset.value);
     this.view.toggle_option(target.dataset.value);
+    EventManager.emit("genresUpdated", this.model.genres_list);
   }
 
   toggle_modal(): void {

@@ -47,7 +47,12 @@ com 22
     I forgot to change the api token for the dotenv import in the genres fetch before.
     Implemented the first controller interaction between GenresController and MovieListController. Now genres change the movie list.
     However, I'm not sure if it's the right way to do it. Must give some thought. Strangely, it actually makes some sense.
-    I still need to work the semicolon and improve the feature in general but for a sigle genre it already works. Big step.
+com 23
+    It wasn't the right way. I learned about the EventManager approach to keep the controllers decoupled and accidentaly about singleton pattern as well. I took my time to understand how it works.
+    I still need to work the semicolon problem for genres and improve the feature in general but for a sigle genre it already works. Big step.
+com 24
+
+
 
 
 

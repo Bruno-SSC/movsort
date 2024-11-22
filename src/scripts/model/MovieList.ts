@@ -22,9 +22,10 @@ export class MovieListModel {
     if (genres.length > 0) url += "with_genres=";
 
     // TODO: handle the semicolon for multiple genres. Also, move this to a proper function because there will me more filters.
-    genres.forEach((g) => {
+    genres.forEach((g, index) => {
       if (g.state === "included") {
         url += g.id;
+        console.log(index);
       }
     });
 
