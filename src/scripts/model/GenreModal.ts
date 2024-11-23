@@ -1,19 +1,19 @@
 import { genre_object } from "../Utils/Interfaces";
 
 export class GenreModalModel {
-  genres_list: genre_object[] = [];
+  genres: genre_object[] = [];
 
   async init() {
     const data: genre_object[] = await this.fetch_genres();
-    this.genres_list = data;
+    this.genres = data;
 
-    this.genres_list.forEach((genre) => {
+    this.genres.forEach((genre) => {
       genre.state = "ignored";
     });
   }
 
   toggle_option(name: string): void {
-    this.genres_list.forEach((genre) => {
+    this.genres.forEach((genre) => {
       if (genre.name != name) return;
 
       if (genre.state === "ignored") {

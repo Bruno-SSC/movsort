@@ -49,9 +49,10 @@ com 22
     However, I'm not sure if it's the right way to do it. Must give some thought. Strangely, it actually makes some sense.
 com 23
     It wasn't the right way. I learned about the EventManager approach to keep the controllers decoupled and accidentaly about singleton pattern as well. I took my time to understand how it works.
-    I still need to work the semicolon problem for genres and improve the feature in general but for a sigle genre it already works. Big step.
 com 24
-
+    Making the year modal work like the genre one. Next commit I'll be working on making the movie_list update with changes in both.
+com 25
+    
 
 
 

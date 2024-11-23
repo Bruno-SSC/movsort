@@ -3,20 +3,15 @@ import { GenreModalView } from "../view/GenreModal";
 import { EventManager } from "../Utils/EventManager";
 
 export class GenreModalController {
-  model: GenreModalModel;
-  view: GenreModalView;
-
-  constructor() {
-    this.model = new GenreModalModel();
-    this.view = new GenreModalView();
-  }
+  private model: GenreModalModel = new GenreModalModel();
+  private view: GenreModalView = new GenreModalView();
 
   async init(): Promise<void> {
     await this.model.init(); // fetches the genres and stores it.
-    this.view.render_options(this.model.genres_list);
+    this.view.render_options(this.model.genres);
 
     const genre_input = document.getElementById("genre_input") as HTMLElement;
-    genre_input.addEventListener("click", () => this.toggle_modal());
+    genre_input.addEventListener("click", () => this.handle_input_click());
 
     this.view.element.addEventListener("click", (e) => {
       this.handle_option_click(e);
@@ -33,10 +28,10 @@ export class GenreModalController {
 
     this.model.toggle_option(target.dataset.value);
     this.view.toggle_option(target.dataset.value);
-    EventManager.emit("genresUpdated", this.model.genres_list);
+    //EventManager.emit("filter_update", this.model.genres);
   }
 
-  toggle_modal(): void {
+  handle_input_click(): void {
     this.view.toggle_modal();
   }
 }
