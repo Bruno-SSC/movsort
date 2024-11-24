@@ -33,6 +33,6 @@ export class YearModalController {
     this.model.change_year(Number(target.dataset.value));
     this.view.toggle_option(target.dataset.value);
     this.view.clean_nonselected(target.dataset.value);
-    //EventManager.emit("filter_update", this.model.year);
+    EventManager.emit("filter_update", { year: this.model.year });
   }
 }

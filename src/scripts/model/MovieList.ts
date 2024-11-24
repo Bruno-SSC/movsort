@@ -1,7 +1,8 @@
-import { genre_object } from "../Utils/Interfaces";
+import { filters_object, genre_object } from "../Utils/Interfaces";
 
 export class MovieListModel {
   movies: { [key: string]: any }[] = [];
+  active_filters: { [key: string]: any } = {};
 
   constructor() {}
 
@@ -9,7 +10,15 @@ export class MovieListModel {
     await this.fetch_movies();
   }
 
-  async fetch_movies(genres: genre_object[] = []): Promise<void> {
+  update_active_filters(data: { [key: string]: any }) {
+    const keys = Object.keys(data);
+
+    for (let k of keys) {
+      this.active_filters[k] = data[k];
+    }
+  }
+
+  async fetch_movies(): Promise<void> {
     const options = {
       method: "GET",
       headers: {
@@ -19,20 +28,26 @@ export class MovieListModel {
     };
 
     let url = "https://api.themoviedb.org/3/discover/movie?";
-    if (genres.length > 0) url += "with_genres=";
-
-    // TODO: handle the semicolon for multiple genres. Also, move this to a proper function because there will me more filters.
-    genres.forEach((g, index) => {
-      if (g.state === "included") {
-        url += g.id;
-        console.log(index);
-      }
-    });
-
+    this.add_genres_url(url);
     const res = await fetch(url, options);
     const json = await res.json();
     this.movies = json.results; // TODO: instead of just copying, iterate and create proper objects with typing.
   }
-}
 
+  add_genres_url(url: string): string {
+    const genres: genre_object[] = this.active_filters.genres;
+    if (!genres) return url;
+
+    url += "with_genres=";
+
+    genres.forEach((g) => {
+      if (g.state === "included") url += g.id + ",";
+    });
+
+    url = url.slice(0, url.length - 1);
+    url += "&";
+    console.log(url);
+    return url;
+  }
+}
 /* include_adult=false& include_video=false& language=en-US& page=1& sort_by=popularity.desc */

@@ -52,6 +52,7 @@ com 23
 com 24
     Making the year modal work like the genre one. Next commit I'll be working on making the movie_list update with changes in both.
 com 25
+    finally working on the semicolon problem (building the query url based on active filters)
     
 
 
