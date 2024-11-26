@@ -55,6 +55,8 @@ com 25
     finally working on the semicolon problem (building the query url based on active filters). I was in a hold up about how to work with fetching the movies with the right filters.
 com 26
     Built the feature to fetch with both filters (year and genre) and multiple genres as well. Not only it works, as it looks good as well. 
+com 27
+    now the active genres are shown in the genre_input element with the ellipses effect for overflowing genres and a counter for the total.
 
 
 

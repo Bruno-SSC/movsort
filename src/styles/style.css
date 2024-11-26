@@ -60,11 +60,33 @@ html {
 
 .filter .filter__input {
   margin-bottom: 10px;
-  padding: 20px 100px;
+  height: 50px;
+  width: 180px;
+  padding: 0 10px;
   background-color: #fff;
   border-radius: 5px;
   border: none;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter .filter__input > * {
+  display: grid;
+  place-items: center;
+}
+
+.filter .filter__input .filter__active_options {
+  display: block;
+  width: 75%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.filter .filter__counter {
+  height: 30px;
+  width: 30px;
 }
 
 .filter .filter__modal_box {

@@ -60,4 +60,23 @@ export class GenreModalView {
       return;
     }
   }
+
+  show_active_options(genres: genre_object[]) {
+    const placeholder = document.getElementById(
+      "active_genres_placeholder"
+    ) as HTMLElement;
+
+    const counter = document.getElementById("active_genres_counter") as HTMLElement;
+    const included = genres.filter((g) => g.state === "included");
+
+    placeholder.innerText = "";
+    counter.innerText = "";
+
+    if (included.length <= 0) return;
+
+    let textContent = included.map((inc) => inc.name).join(", ");
+    placeholder.innerText = textContent;
+    
+    counter.innerHTML = included.length.toString();
+  }
 }
