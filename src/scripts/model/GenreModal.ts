@@ -1,10 +1,11 @@
+import { API } from "../Utils/API";
 import { genre_object } from "../Utils/Interfaces";
 
 export class GenreModalModel {
   genres: genre_object[] = [];
 
   async init() {
-    const data: genre_object[] = await this.fetch_genres();
+    const data: genre_object[] = await API.fetch_genres();
     this.genres = data;
 
     this.genres.forEach((genre) => {
@@ -31,20 +32,5 @@ export class GenreModalModel {
         return;
       }
     });
-  }
-
-  async fetch_genres(): Promise<genre_object[]> {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: import.meta.env.VITE_API_TOKEN,
-      },
-    };
-
-    const URL = "https://api.themoviedb.org/3/genre/movie/list";
-    const req = await fetch(URL, options);
-    const json = await req.json();
-    return json.genres;
   }
 }

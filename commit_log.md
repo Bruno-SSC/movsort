@@ -52,8 +52,10 @@ com 23
 com 24
     Making the year modal work like the genre one. Next commit I'll be working on making the movie_list update with changes in both.
 com 25
-    finally working on the semicolon problem (building the query url based on active filters)
-    
+    finally working on the semicolon problem (building the query url based on active filters). I was in a hold up about how to work with fetching the movies with the right filters.
+com 26
+    Built the feature to fetch with both filters (year and genre) and multiple genres as well. Not only it works, as it looks good as well. 
+
 
 
 
