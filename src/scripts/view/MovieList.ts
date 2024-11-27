@@ -9,7 +9,7 @@ export class MovieListView {
     const poster_src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
     const movie_card = `
-        <div class="movie_card">
+        <div class="movie_card" data-movie_id="${movie.id}">
           <div class="movie_card__poster_wrapper">
             <img class="movie_card__poster_img" src="${poster_src}" alt="poster">
           </div>
@@ -21,10 +21,10 @@ export class MovieListView {
   }
 
   clean_movie_list() {
-    const movie_list = Array.from(
+    const card_list = Array.from(
       this.element.getElementsByClassName("movie_card") as HTMLCollectionOf<HTMLElement>
     );
 
-    movie_list.forEach((card) => card.remove());
+    card_list.forEach((card) => card.remove());
   }
 }

@@ -26,9 +26,6 @@ export class GenreModalView {
       new_item.dataset.state = "ignored";
       new_item.classList.add("filter__modal_option");
       new_item.innerText = genre.name;
-
-      new_item.addEventListener("click", () => {}); // event to bubble up
-
       this.element.appendChild(new_item);
     });
   }

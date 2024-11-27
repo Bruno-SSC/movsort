@@ -11,6 +11,7 @@
     <div id="app">
       <header>
         <section class="options_list">
+          
           <div class="filter">
             <div id="genre_input" class="filter__input">
               <div id="active_genres_placeholder" class="filter__active_options">
@@ -27,14 +28,40 @@
             </div>
             <ul id="year_modal" class="filter__modal_box filter__modal_box--hidden"></ul>
           </div>
+
+          <div class="filter search_bar">
+            <div class="filter__magnifier_icon">
+              <img src="/magnifier.png" class="filter__magnifier_img" alt="magnifier_icon">
+            </div>
+            <input id="search_input" class="filter__input filter__input_search"/>            
+          </div>
+          
+          <div class="icon_panel">
+            <div class="icon_panel__img_wrapper">
+              <img  class="icon_panel__icon_img" id="grid_layout" src="/grid.png" alt="grid">
+            </div>
+            
+            <div class="icon_panel__img_wrapper">
+              <img class="icon_panel__icon_img" id="list_layout" src="/list.png" alt="list">
+            </div>
+          
+            <div class="icon_panel__img_wrapper">
+              <img class="icon_panel__icon_img" id="shuffle_btn" src="/shuffle.png" alt="shuffle_btn">
+            </div>
+          </div>
+  
         </section>
+      </section>
+
       </header>
 
       <main>
         <section class="movie_list" id="movie_list"></section>
       </main>
 
-      <footer></footer>
+      <footer>
+        <a target="_blank" href="https://icons8.com">Icons8</a>
+      </footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

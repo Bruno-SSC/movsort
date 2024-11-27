@@ -11,6 +11,10 @@ html {
   background-color: #edf1f5;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
 html {
   font-family: "Inter", sans-serif;
 }
@@ -22,9 +26,9 @@ header {
 .movie_list {
   margin: auto;
   min-height: 100vh;
-  width: 80vw;
-  display: flex;
-  flex-wrap: wrap;
+  width: 60vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 30px;
   padding-bottom: 100px;
 }
@@ -34,7 +38,7 @@ header {
 }
 
 .movie_card {
-  width: 150px;
+  width: 100%;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
@@ -61,40 +65,43 @@ header {
   white-space: nowrap;
   font-size: 16px;
   font-weight: 700;
-  margin-top: 10px;
-  padding: 0 15px;
+  padding: 15px;
   text-align: center;
 }
 
 .options_list {
   margin: auto;
   padding: 30px 0px;
-  width: 80vw;
+  width: 60vw;
   margin-bottom: 30px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 50px;
 }
 
 .filter {
   position: relative;
+  flex: 0;
 }
 
 .filter .filter__input {
-  cursor: pointer;
-  margin-bottom: 10px;
   height: 50px;
   width: 180px;
-  padding: 0 20px;
-  background-color: #fff;
-  border-radius: 5px;
+  padding: 0 15px;
   border: none;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  background-color: #fff;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.filter .filter__input > * {
+
+.filter .filter__input .filter__active_options,
+.filter__counter {
   display: grid;
   place-items: center;
 }
@@ -112,10 +119,52 @@ header {
   width: 30px;
 }
 
+.search_bar {
+  flex: 1;
+}
+
+.filter .filter__input_search {
+  width: 100%;
+  padding-left: 50px;
+  font-size: 16px;
+}
+
+.filter .filter__magnifier_icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 20px;
+}
+.filter .filter__magnifier_icon .filter__magnifier_img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.icon_panel {
+  display: flex;
+  align-items: center;
+  justify-self: flex-end;
+  gap: 15px;
+}
+
+.icon_panel .icon_panel__img_wrapper {
+  width: 30px;
+  height: 30px;
+}
+.icon_panel .icon_panel__img_wrapper .icon_panel__icon_img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .filter .filter__modal_box {
   position: absolute;
   width: 100%;
   height: 300px;
+  margin-top: 10px;
   overflow-y: scroll;
   list-style: none;
   background-color: aliceblue;

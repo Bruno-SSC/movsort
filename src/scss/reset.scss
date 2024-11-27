@@ -9,3 +9,7 @@ html {
   overflow-x: hidden;
   background-color: #edf1f5;
 }
+
+html::-webkit-scrollbar {
+  display: none;
+}

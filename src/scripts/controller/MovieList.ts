@@ -16,7 +16,6 @@ export class MovieListController {
   async init() {
     // TODO: instead of just copying, iterate and create proper objects with typing.
     // do it even before returning the json.results or using a processing method from the model here to "build_genre_objects"?
-
     this.model.movies = await API.fetch_movies();
     this.model.movies.forEach((mov: any) => this.view.create_movie_card(mov));
 
@@ -33,7 +32,7 @@ export class MovieListController {
       const year_str: string = API.year_to_str(ActiveFilters.year);
       const params = [genre_str, year_str].join("&");
       const url = API.base_url + params;
-      
+
       this.model.movies = await API.fetch_movies(url);
       this.update_movies();
     });

@@ -59,6 +59,8 @@ com 27
     now the active genres are shown in the genre_input element with the ellipses effect for overflowing genres and a counter for the total.
 com 28
     Did some styling changes.
+com 29
+    More style changes, added elements for name searching, icons for layout changing and shuffle movie.
 
 
 

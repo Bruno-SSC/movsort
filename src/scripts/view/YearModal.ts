@@ -15,7 +15,6 @@ export class YearModalView {
       new_item.dataset.state = "ignored";
       new_item.classList.add("filter__modal_option");
       new_item.innerText = i.toString();
-      new_item.addEventListener("click", () => {}); // event to bubble up
       this.element.appendChild(new_item);
     }
   }
@@ -65,7 +64,7 @@ export class YearModalView {
     }
   }
 
-  show_active_year(year: string = "") {
+  show_active_year(year: string = "Year") {
     const year_placeholder = document.getElementById(
       "active_year_placeholder"
     ) as HTMLElement;
