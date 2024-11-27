@@ -12,6 +12,10 @@
   border-radius: 5px;
 }
 
+.filter .filter__modal_box::-webkit-scrollbar {
+  display: none;
+}
+
 .filter .filter__modal_box .filter__modal_option {
   padding: 10px;
   padding-left: 10px;
@@ -20,7 +24,7 @@
   transition-delay: 100ms;
 
   text-align: center;
-  font-size: 16px;
+  font-size: 12px;
   letter-spacing: 1px;
   cursor: pointer;
 

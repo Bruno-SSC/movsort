@@ -9,26 +9,28 @@
 
   <body>
     <div id="app">
-      <header></header>
-
-      <main>
+      <header>
         <section class="options_list">
           <div class="filter">
-            <p class="filter__title">Genre</p>
             <div id="genre_input" class="filter__input">
-              <div id="active_genres_placeholder" class="filter__active_options"></div>
-              <div id="active_genres_counter" class="filter__counter"></div>
+              <div id="active_genres_placeholder" class="filter__active_options">
+                Genres
+              </div>
+              <div id="active_genres_counter" class="filter__counter">0</div>
             </div>
             <ul id="genre_modal" class="filter__modal_box filter__modal_box--hidden"></ul>
           </div>
 
           <div class="filter">
-            <p class="filter__title">Year</p>
-            <div id="year_input" class="filter__input"></div>
+            <div id="year_input" class="filter__input">
+              <div id="active_year_placeholder" class="filter__active_options">Year</div>
+            </div>
             <ul id="year_modal" class="filter__modal_box filter__modal_box--hidden"></ul>
           </div>
         </section>
+      </header>
 
+      <main>
         <section class="movie_list" id="movie_list"></section>
       </main>
 

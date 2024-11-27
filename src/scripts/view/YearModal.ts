@@ -64,4 +64,12 @@ export class YearModalView {
       return;
     }
   }
+
+  show_active_year(year: string = "") {
+    const year_placeholder = document.getElementById(
+      "active_year_placeholder"
+    ) as HTMLElement;
+
+    year_placeholder.innerText = year;
+  }
 }

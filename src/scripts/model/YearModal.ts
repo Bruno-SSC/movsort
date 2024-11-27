@@ -1,5 +1,5 @@
 export class YearModalModel {
-  year: number = 0;
+  year: number = 2024;
 
   init() {}
 

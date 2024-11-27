@@ -10,7 +10,10 @@ export class MovieListView {
 
     const movie_card = `
         <div class="movie_card">
-          <img class="movie_card__poster_img" src="${poster_src}" alt="poster">
+          <div class="movie_card__poster_wrapper">
+            <img class="movie_card__poster_img" src="${poster_src}" alt="poster">
+          </div>
+          <h1 class="movie_card__title"> ${movie.title} </h1>
         </div>
       `;
 

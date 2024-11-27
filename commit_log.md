@@ -57,6 +57,10 @@ com 26
     Built the feature to fetch with both filters (year and genre) and multiple genres as well. Not only it works, as it looks good as well. 
 com 27
     now the active genres are shown in the genre_input element with the ellipses effect for overflowing genres and a counter for the total.
+com 28
+    Did some styling changes.
+
+
 
 
 

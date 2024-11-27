@@ -28,7 +28,7 @@ export class GenreModalController {
 
     this.model.toggle_option(target.dataset.value);
     this.view.toggle_option(target.dataset.value);
-    this.view.show_active_options(this.model.genres);
+    this.view.show_active_genres(this.model.genres);
     EventManager.emit("filter_update", { genres: this.model.genres });
   }
 
