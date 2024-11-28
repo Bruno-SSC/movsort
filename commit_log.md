@@ -61,6 +61,8 @@ com 28
     Did some styling changes.
 com 29
     More style changes, added elements for name searching, icons for layout changing and shuffle movie.
+com 30 
+    Defined a proper interface for the movie_object and started working on the movie search feature. It kinda works but is just a starter attempt.
 
 
 
