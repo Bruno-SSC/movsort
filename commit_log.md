@@ -63,6 +63,9 @@ com 29
     More style changes, added elements for name searching, icons for layout changing and shuffle movie.
 com 30 
     Defined a proper interface for the movie_object and started working on the movie search feature. It kinda works but is just a starter attempt.
+com 31
+    Since I'm stubborn I tried coming up with a non recursive, not built in way of sorting the name search results based on their compatibility.
+    I failed and I'm currently on my way to understand how to do it with GPT help.
 
 
 

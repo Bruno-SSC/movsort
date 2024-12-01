@@ -37,6 +37,8 @@ export class MovieListController {
       this.update_movies();
     });
 
+    this.handle_name_search("Venom");
+
     EventManager.create_event("name_search", ({ query }) =>
       this.handle_name_search(query)
     );
@@ -48,9 +50,9 @@ export class MovieListController {
       return;
     }
 
-    const results = this.model.search_by_name(query)[0];
+    const results = this.model.search_by_name(query);
     this.view.clean_movie_list();
-    this.view.create_movie_card(results);
+    results.forEach((mov: any) => this.view.create_movie_card(mov));
   }
 
   async update_movies() {
