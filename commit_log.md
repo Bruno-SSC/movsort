@@ -65,7 +65,10 @@ com 30
     Defined a proper interface for the movie_object and started working on the movie search feature. It kinda works but is just a starter attempt.
 com 31
     Since I'm stubborn I tried coming up with a non recursive, not built in way of sorting the name search results based on their compatibility.
-    I failed and I'm currently on my way to understand how to do it with GPT help.
+com 32
+    Finished the name search feature with the old plain recursive quicksort.
+    
+    
 
 
 

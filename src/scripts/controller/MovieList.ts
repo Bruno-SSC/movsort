@@ -37,8 +37,6 @@ export class MovieListController {
       this.update_movies();
     });
 
-    this.handle_name_search("Venom");
-
     EventManager.create_event("name_search", ({ query }) =>
       this.handle_name_search(query)
     );

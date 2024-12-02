@@ -24,44 +24,27 @@ export class MovieListModel {
       ranking_list.push(subject_obj);
     });
 
-    const results = this.quicksortIterative(ranking_list);
-    //results.forEach((e) => console.log(e.score, e.title));
-
-    return [];
+    return this.sort_movies(ranking_list);
   }
 
-  quicksortIterative(array: { score: number }[]): { score: number }[] {
-    let stack: [number, number][] = [[0, array.length - 1]]; // Stack to hold subarray bounds
-
-    while (stack.length > 0) {
-      const [start, end] = stack.pop()!;
-      console.log(start,end)
-      if (start >= end) continue; 
-
-      // Partition the array
-      const pivotIndex = this.partition(array, start, end);
-
-      // Push the left and right subarrays onto the stack
-      stack.push([start, pivotIndex - 1]); // Left subarray
-      stack.push([pivotIndex + 1, end]); // Right subarray
+  sort_movies(ranked: movie_object[]): movie_object[] {
+    if (ranked.length <= 1) {
+      return ranked;
     }
 
-    return array;
-  }
+    const pivot: movie_object = ranked[ranked.length - 1];
+    const smaller: movie_object[] = [];
+    const larger: movie_object[] = [];
 
-  partition(arr: { score: number }[], low: number, high: number): number {
-    const pivot = arr[high].score; // Choose the last element as pivot
-    let i = low - 1;
-
-    for (let j = low; j < high; j++) {
-      if (arr[j].score <= pivot) {
-        i++;
-        [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap
+    for (let i = 0; i < ranked.length - 1; i++) {
+      if (ranked[i].score < pivot.score) {
+        smaller.push(ranked[i]);
+      } else {
+        larger.push(ranked[i]);
       }
     }
 
-    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]]; // Place pivot in its final position
-    return i + 1; // Return pivot index
+    return [...this.sort_movies(larger), pivot, ...this.sort_movies(smaller)];
   }
 
   format_movies(generic_list: { [key: string]: any }[]): movie_object[] {
