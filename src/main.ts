@@ -12,7 +12,7 @@ const year_modal_controller = new YearModalController();
 year_modal_controller.init();
 
 const movie_search_controller = new MovieSearchController();
-movie_search_controller.init()
+movie_search_controller.init();
 
 const movie_list_controller = new MovieListController();
 movie_list_controller.init();

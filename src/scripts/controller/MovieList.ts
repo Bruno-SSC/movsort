@@ -16,7 +16,29 @@ export class MovieListController {
   async init() {
     const generic_list = await API.fetch_movies();
     this.model.movies = this.model.format_movies(generic_list);
-    this.model.movies.forEach((mov: any) => this.view.create_movie_card(mov));
+    this.model.movies.forEach((mov: any) => this.view.create_grid_card(mov));
+
+    const icon_panel = document.getElementById("icon_panel") as HTMLElement;
+
+    icon_panel.addEventListener("click", (e: Event) => {
+      e.stopPropagation();
+      const target = e.target as HTMLElement;
+      this.view.clean_movie_list();
+
+      if (target.id === "shuffle_btn") {
+        const rand_i = Math.round(Math.random() * this.model.movies.length);
+        const choosen = this.model.movies.splice(rand_i, 1)[0];
+        this.model.movies.unshift(choosen);
+        this.model.movies.forEach((e) => this.view.create_grid_card(e));
+        return;
+      }
+
+      this.view.toggle_layout();
+      this.model.movies.forEach((e) => {
+        if (this.view.layout) this.view.create_grid_card(e);
+        else this.view.create_list_card(e);
+      });
+    });
 
     EventManager.create_event("filter_update", async (data) => {
       if (data["year"]) {
@@ -50,11 +72,11 @@ export class MovieListController {
 
     const results = this.model.search_by_name(query);
     this.view.clean_movie_list();
-    results.forEach((mov: any) => this.view.create_movie_card(mov));
+    results.forEach((mov: any) => this.view.create_grid_card(mov));
   }
 
   async update_movies() {
     this.view.clean_movie_list();
-    this.model.movies.forEach((mov: any) => this.view.create_movie_card(mov));
+    this.model.movies.forEach((mov: any) => this.view.create_grid_card(mov));
   }
 }

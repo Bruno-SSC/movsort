@@ -36,13 +36,9 @@
             <input id="search_input" class="filter__input filter__input_search"/>            
           </div>
           
-          <div class="icon_panel">
+          <div class="icon_panel" id="icon_panel">
             <div class="icon_panel__img_wrapper">
-              <img  class="icon_panel__icon_img" id="grid_layout" src="/grid.png" alt="grid">
-            </div>
-            
-            <div class="icon_panel__img_wrapper">
-              <img class="icon_panel__icon_img" id="list_layout" src="/list.png" alt="list">
+              <img id="layout_btn"  class="icon_panel__icon_img" src="/grid.png" alt="layout_btn">
             </div>
           
             <div class="icon_panel__img_wrapper">
@@ -56,7 +52,7 @@
       </header>
 
       <main>
-        <section class="movie_list" id="movie_list"></section>
+        <section class="movie_list grid_layout" id="movie_list"></section>
       </main>
 
       <footer>

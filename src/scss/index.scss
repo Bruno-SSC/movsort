@@ -1,5 +1,5 @@
 @use "reset";
-@use "header";
-@use "movie_list";
-@use "options_list";
-@use "modal_box";
+@use "./components/movie_card_grid.scss";
+@use "./components/movie_card_list.scss";
+@use "./components/options_list.scss";
+@use "./components/modal_box.scss";

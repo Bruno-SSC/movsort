@@ -67,6 +67,8 @@ com 31
     Since I'm stubborn I tried coming up with a non recursive, not built in way of sorting the name search results based on their compatibility.
 com 32
     Finished the name search feature with the old plain recursive quicksort.
+com 33
+    Roughly Implemented the shuffle and layout switching. 
     
     
 

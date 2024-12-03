@@ -7,6 +7,7 @@
 }
 
 html {
+  font-family: "Inter", sans-serif;
   overflow-x: hidden;
   background-color: #edf1f5;
 }
@@ -15,15 +16,15 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-html {
-  font-family: "Inter", sans-serif;
-}
-
 header {
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
-.movie_list {
+.movie_list::-webkit-scrollbar {
+  display: none;
+}
+
+.movie_list.grid_layout {
   margin: auto;
   min-height: 100vh;
   width: 60vw;
@@ -32,32 +33,24 @@ header {
   gap: 30px;
   padding-bottom: 100px;
 }
-
-.movie_list::-webkit-scrollbar {
-  display: none;
-}
-
-.movie_card {
+.movie_list.grid_layout .movie_card {
   width: 100%;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
 }
-
-.movie_card__poster_wrapper {
+.movie_list.grid_layout .movie_card__poster_wrapper {
   height: 200px;
   width: 100%;
   overflow: hidden;
   cursor: pointer;
 }
-
-.movie_card__poster_img {
+.movie_list.grid_layout .movie_card__poster_img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-.movie_card__title {
+.movie_list.grid_layout .movie_card__title {
   display: block;
   width: 100%;
   overflow: hidden;
@@ -67,6 +60,58 @@ header {
   font-weight: 700;
   padding: 15px;
   text-align: center;
+}
+
+.movie_list.list_layout {
+  margin: auto;
+  min-height: 100vh;
+  width: 60vw;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.movie_list.list_layout .movie_card {
+  display: flex;
+  width: 100%;
+  height: 300px;
+  background-color: azure;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.movie_list.list_layout .movie_card__poster_wrapper {
+  width: 300px;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.movie_list.list_layout .movie_card__poster_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.movie_list.list_layout .movie_card__text_info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.movie_list.list_layout .movie_card__title_score {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+}
+.movie_list.list_layout .movie_card__score_number {
+  background-color: #edf1f5;
+  padding: 15px;
+  border-radius: 50%;
+  aspect-ratio: 16/9;
+  display: grid;
+  place-items: center;
 }
 
 .options_list {
@@ -127,6 +172,7 @@ header {
   width: 100%;
   padding-left: 50px;
   font-size: 16px;
+  cursor: text;
 }
 
 .filter .filter__magnifier_icon {
