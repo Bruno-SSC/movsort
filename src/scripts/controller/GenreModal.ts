@@ -1,6 +1,7 @@
 import { GenreModalModel } from "../model/GenreModal";
 import { GenreModalView } from "../view/GenreModal";
 import { EventManager } from "../Utils/EventManager";
+import { ActiveFilters } from "../Utils/ActiveFilters";
 
 export class GenreModalController {
   private model: GenreModalModel = new GenreModalModel();
@@ -8,6 +9,9 @@ export class GenreModalController {
 
   async init(): Promise<void> {
     await this.model.init(); // fetches the genres and stores it.
+    ActiveFilters.genres = this.model.genres; 
+    // I need the relation of name <-> ID in other places of the app. 
+
     this.view.render_options(this.model.genres);
 
     const genre_input = document.getElementById("genre_input") as HTMLElement;

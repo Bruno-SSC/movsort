@@ -19,26 +19,7 @@ export class MovieListController {
     this.model.movies.forEach((mov: any) => this.view.create_grid_card(mov));
 
     const icon_panel = document.getElementById("icon_panel") as HTMLElement;
-
-    icon_panel.addEventListener("click", (e: Event) => {
-      e.stopPropagation();
-      const target = e.target as HTMLElement;
-      this.view.clean_movie_list();
-
-      if (target.id === "shuffle_btn") {
-        const rand_i = Math.round(Math.random() * this.model.movies.length);
-        const choosen = this.model.movies.splice(rand_i, 1)[0];
-        this.model.movies.unshift(choosen);
-        this.model.movies.forEach((e) => this.view.create_grid_card(e));
-        return;
-      }
-
-      this.view.toggle_layout();
-      this.model.movies.forEach((e) => {
-        if (this.view.layout) this.view.create_grid_card(e);
-        else this.view.create_list_card(e);
-      });
-    });
+    icon_panel.addEventListener("click", (e: Event) => this.handle_layout_toggle());
 
     EventManager.create_event("filter_update", async (data) => {
       if (data["year"]) {
@@ -62,6 +43,15 @@ export class MovieListController {
     EventManager.create_event("name_search", ({ query }) =>
       this.handle_name_search(query)
     );
+  }
+
+  handle_layout_toggle() {
+    this.view.clean_movie_list();
+    this.view.toggle_layout();
+    this.model.movies.forEach((e) => {
+      if (this.view.layout) this.view.create_grid_card(e);
+      else this.view.create_list_card(e);
+    });
   }
 
   handle_name_search(query: string) {

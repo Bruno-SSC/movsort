@@ -1,3 +1,4 @@
+import { ActiveFilters } from "../Utils/ActiveFilters";
 import { movie_object } from "../Utils/Interfaces";
 
 export class MovieListView {
@@ -24,20 +25,45 @@ export class MovieListView {
 
   create_list_card(movie: movie_object) {
     const poster_src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+
+    const genres = movie.genres_id.map((number) => {
+      let genre_as_str: string;
+
+      ActiveFilters.genres.forEach((genre) => {
+        if (genre.id === number) {
+          genre_as_str = genre.name;
+        }
+      });
+
+      return genre_as_str!.toLocaleLowerCase();
+    });
+
     let movie_card: string = `
     <div class="movie_card" data-movie_id="${movie.id}">
       <div class="movie_card__poster_wrapper">
         <img class="movie_card__poster_img" src="${poster_src}" alt="poster">
       </div>
+      
       <div class="movie_card__text_info">
         <div class="movie_card__title_score">
           <h1> ${movie.title}  </h1>
           <span class="movie_card__score_number"> ${Math.round(movie.score)} </span>
         </div>
 
-        <p> ${movie.overview} </p>
-        <p> ${movie.genres_id} </p>
-        <p> ${movie.release_date} </p>
+        <div class="movie_card__overview">
+          <p> ${movie.overview} </p>  
+        </div>
+        
+        <div class="movie_card__genres">
+          <img src="/tag_blue.png" class="movie_card__tag_blue_icon">
+          <p> ${genres.join(" - ")} </p>
+        </div>
+        
+        <div class="movie_card__release_info" >
+          <p class="movie_card__release_paragraph"> Release: </p>
+          <p> ${movie.release_date} </p>
+        </div>
+
       </div>
     </div>
     `;
