@@ -43,7 +43,6 @@ header {
   height: 200px;
   width: 100%;
   overflow: hidden;
-  cursor: pointer;
 }
 .movie_list.grid_layout .movie_card__poster_img {
   width: 100%;
@@ -83,7 +82,6 @@ header {
   min-width: 200px;
   height: 100%;
   overflow: hidden;
-  cursor: pointer;
 }
 .movie_list.list_layout .movie_card__poster_img {
   width: 100%;
@@ -278,6 +276,30 @@ header {
 .filter .filter__modal_box--hidden .filter__modal_option {
   opacity: 0;
   transition: all 500ms ease;
+}
+
+.pagination {
+  margin: auto;
+  width: 60vw;
+  display: flex;
+  gap: 15px;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.pagination__number {
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.pagination__number--active {
+  color: blue;
+}
+
+.pagination::-webkit-scrollbar {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

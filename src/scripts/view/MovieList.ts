@@ -93,6 +93,4 @@ export class MovieListView {
       layout_btn.src = "/list.png";
     }
   }
-
-  
 }

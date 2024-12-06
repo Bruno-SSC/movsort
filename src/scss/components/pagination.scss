@@ -1,0 +1,23 @@
+.pagination {
+  margin: auto;
+  width: 60vw;
+  display: flex;
+  gap: 15px;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.pagination__number {
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.pagination__number--active {
+  color: blue;
+}
+
+.pagination::-webkit-scrollbar {
+  display: none;
+}

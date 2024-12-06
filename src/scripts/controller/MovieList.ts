@@ -3,7 +3,7 @@ import { MovieListView } from "../view/MovieList";
 import { EventManager } from "../Utils/EventManager";
 import { API } from "../Utils/API";
 import { ActiveFilters } from "../Utils/ActiveFilters";
-import { filter_event_data, movie_object } from "../Utils/Interfaces";
+import { filter_event_data, json_movies_res, movie_object } from "../Utils/Interfaces";
 
 export class MovieListController {
   model: MovieListModel;
@@ -15,12 +15,12 @@ export class MovieListController {
   }
 
   async init() {
-    const generic_list = await API.fetch_movies();
-    this.model.movies = this.model.format_movies(generic_list);
-    this.model.movies.forEach((mov: any) => this.view.create_grid_card(mov));
+    const json_list: json_movies_res = await API.fetch_movies();
+    this.model.movies = this.model.format_movies(json_list.results);
+    this.model.movies.forEach((mov: movie_object) => this.view.create_grid_card(mov));
 
     const icon_panel = document.getElementById("icon_panel") as HTMLElement;
-    icon_panel.addEventListener("click", (e: Event) => this.handle_layout_toggle());
+    icon_panel.addEventListener("click", () => this.handle_layout_toggle());
 
     EventManager.create_event("filter_update", (data) => this.handle_filter_update(data));
 
@@ -38,13 +38,18 @@ export class MovieListController {
       ActiveFilters.genres = data.genres;
     }
 
+    if (data["page"]) {
+      ActiveFilters.page = data.page;
+    }
+
     const genre_str: string = API.genres_to_str(ActiveFilters.genres);
     const year_str: string = API.year_to_str(ActiveFilters.year);
-    const params = [genre_str, year_str].join("&");
+    const page_str: string = API.page_to_str(ActiveFilters.page);
+    const params = [genre_str, year_str, page_str].join("&");
     const url = API.base_url + params;
 
-    const generic_list = await API.fetch_movies(url);
-    this.model.movies = this.model.format_movies(generic_list);
+    const json_list: json_movies_res = await API.fetch_movies(url);
+    this.model.movies = this.model.format_movies(json_list.results);
     this.update_movies();
   }
 

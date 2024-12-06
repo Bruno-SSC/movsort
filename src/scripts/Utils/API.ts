@@ -1,4 +1,4 @@
-import { genre_object } from "./Interfaces";
+import { genre_object, json_movies_res } from "./Interfaces";
 
 export class API {
   static options = {
@@ -18,10 +18,10 @@ export class API {
     return json.genres;
   }
 
-  static async fetch_movies(url: string = API.base_url): Promise<any[]> {
+  static async fetch_movies(url: string = API.base_url): Promise<json_movies_res> {
     const res = await fetch(url, API.options);
     const json = await res.json();
-    return json.results;
+    return json;
   }
 
   static genres_to_str(genres: genre_object[]): string {
@@ -36,6 +36,11 @@ export class API {
 
   static year_to_str(year: number): string {
     let new_str: string = "primary_release_year=" + year;
+    return new_str;
+  }
+
+  static page_to_str(page: number): string {
+    let new_str: string = "page=" + page;
     return new_str;
   }
 }
