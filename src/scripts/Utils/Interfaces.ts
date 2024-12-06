@@ -12,6 +12,11 @@ export interface option_state {
   [key: string]: "ignored" | "included" | "excluded";
 }
 
+export interface filter_event_data {
+  year: number;
+  genres: genre_object[];
+}
+
 export interface genre_object {
   name: string;
   id: number;

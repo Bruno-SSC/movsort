@@ -1,4 +1,8 @@
-import { genre_object, movie_object } from "../Utils/Interfaces";
+import { movie_object } from "../Utils/Interfaces";
+
+interface movie_subject extends movie_object {
+  search_score: number;
+}
 
 export class MovieListModel {
   movies: movie_object[] = [];
@@ -8,17 +12,19 @@ export class MovieListModel {
   }
 
   search_by_name(query: string): movie_object[] {
-    let ranking_list: movie_object[] = [];
+    if (query.length <= 0) return this.movies;
+
+    let ranking_list: movie_subject[] = [];
     query = query.toLocaleLowerCase();
 
-    this.movies.forEach((movie, index) => {
-      let subject_obj = { ...movie, score: 0 };
+    this.movies.forEach((movie) => {
+      let subject_obj: movie_subject = { ...movie, search_score: 0 };
 
       const title = movie.title.toLocaleLowerCase();
-      if (title.includes(query)) subject_obj.score += 1;
+      if (title.includes(query)) subject_obj.search_score += 1;
 
       for (let i = 0; i < Math.min(query.length, title.length); i++) {
-        subject_obj.score += query[i] === title[i] ? 1 : -1;
+        subject_obj.search_score += query[i] === title[i] ? 1 : -1;
       }
 
       ranking_list.push(subject_obj);
@@ -27,17 +33,17 @@ export class MovieListModel {
     return this.sort_movies(ranking_list);
   }
 
-  sort_movies(ranked: movie_object[]): movie_object[] {
+  sort_movies(ranked: movie_subject[]): movie_object[] {
     if (ranked.length <= 1) {
       return ranked;
     }
 
-    const pivot: movie_object = ranked[ranked.length - 1];
-    const smaller: movie_object[] = [];
-    const larger: movie_object[] = [];
+    const pivot = ranked[ranked.length - 1];
+    const smaller: movie_subject[] = [];
+    const larger: movie_subject[] = [];
 
     for (let i = 0; i < ranked.length - 1; i++) {
-      if (ranked[i].score < pivot.score) {
+      if (ranked[i].search_score < pivot.search_score) {
         smaller.push(ranked[i]);
       } else {
         larger.push(ranked[i]);

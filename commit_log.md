@@ -71,7 +71,9 @@ com 33
     Roughly Implemented the shuffle and layout switching. 
 com 34
     finished the layout switching and the movie_card for the list layout. Got rid of shuffling feature. 
-    
+com 35
+    micro adjustments, bug fixes and type corrections.
+
     
 
 
