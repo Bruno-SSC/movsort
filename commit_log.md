@@ -74,7 +74,9 @@ com 34
 com 35
     micro adjustments, bug fixes and type corrections.
 com 36
-    more of the previous and implemented the pagination. I just need to sync the amount of pages with the total possible pages later. 
+    more of the previous and implemented the pagination.
+com 37
+    setting up files to deploy live. 
 
     
 
