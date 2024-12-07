@@ -77,6 +77,8 @@ com 36
     more of the previous and implemented the pagination.
 com 37
     setting up files to deploy live. 
+com 38
+    Did a little mess with commit --amend
 
     
 
